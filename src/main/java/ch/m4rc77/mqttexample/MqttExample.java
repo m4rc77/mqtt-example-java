@@ -8,7 +8,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MqttExample {
 
-    private static final String TOPIC = "/status/angle";
+    private static final String TOPIC = "status/angle";
     private static final String BROKER = "tcp://broker.hivemq.com:1883";
     private static int QOS = 1; // at least once ... we do not care about double delivery
 
@@ -140,7 +140,7 @@ public class MqttExample {
             message.setQos(QOS);
             message.setRetained(false);
             client.publish(topicPrefix + TOPIC, message);
-            System.out.println("\rMessage published");
+            System.out.println("\rMessage published to " + topicPrefix + TOPIC);
         } catch(MqttException me) {
             System.out.println("\rError on publishing message " + me );
         }
