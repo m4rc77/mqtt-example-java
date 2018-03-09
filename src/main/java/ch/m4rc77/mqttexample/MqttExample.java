@@ -138,6 +138,7 @@ public class MqttExample {
             System.out.println("\rMQTT Send: " + val);
             MqttMessage message = new MqttMessage(("" + val).getBytes());
             message.setQos(QOS);
+            message.setRetained(false);
             client.publish(topicPrefix + TOPIC, message);
             System.out.println("\rMessage published");
         } catch(MqttException me) {
